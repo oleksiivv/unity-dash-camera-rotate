@@ -12,11 +12,9 @@ public class CameraOrientation : MonoBehaviour
         currentCameraRotation = camera.gameObject.transform.eulerAngles;
     }
 
-    public void ChangeCameraOrientation(){
-                            Debug.Log("Rot: "+camera.gameObject.transform.eulerAngles.z.ToString() + " ||| " + currentCameraRotation.z.ToString());
-
+    public void ChangeCameraOrientation(int degree = -1){
         currentCameraRotation = camera.gameObject.transform.eulerAngles;
-        currentCameraRotation.z = (currentCameraRotation.z - 90f) % 360;
+        currentCameraRotation.z = degree == -1 ? (currentCameraRotation.z - 90f) % 360 : degree;
 
         StartCoroutine(Rotate());
     }
@@ -27,7 +25,7 @@ public class CameraOrientation : MonoBehaviour
             rotationIterator.z += 1f * (camera.transform.eulerAngles.z - currentCameraRotation.z > 0 ? -1 : 1);
             camera.transform.eulerAngles = rotationIterator;
 
-                    Debug.Log("Rot: "+rotationIterator.ToString() + " ||| " + currentCameraRotation.z.ToString());
+            //Debug.Log("Rot: "+rotationIterator.ToString() + " ||| " + currentCameraRotation.z.ToString());
 
 
             yield return new WaitForSeconds(0.01f);

@@ -10,7 +10,8 @@ public class PlayerMoveController : MonoBehaviour
 
     private bool inJump=true;
 
-    private CameraOrientation cameraOrientation;
+    [HideInInspector]
+    public CameraOrientation cameraOrientation;
 
     void Start(){
         rigidbody = GetComponent<Rigidbody>();
@@ -21,9 +22,9 @@ public class PlayerMoveController : MonoBehaviour
     void Update()
     {
         //rigidbody.AddForce(Vector3.left*100 * speed);
-        transform.Translate(Vector3.left/100 * speed);
+        transform.Translate((Vector3.left/50) * speed);
 
-        if(Input.GetMouseButtonDown(0) && !inJump){
+        if(Input.GetMouseButtonDown(0) && !inJump && PlayerStateController.CanMove){
             inJump=true;
             cameraOrientation.ChangeCameraOrientation();
 
@@ -32,9 +33,13 @@ public class PlayerMoveController : MonoBehaviour
         }
     }
 
+    public void Stop(){
+        speed=0;
+    }
+
     void OnCollisionExit(Collision other){
         if(!inJump){
-            speed=0;
+            Stop();
         }
     }
 

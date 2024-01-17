@@ -8,11 +8,17 @@ public class FollowObject : MonoBehaviour
 
     private Vector3 distanceDifference;
 
+    public bool followY = true;
+
     void Start(){
         distanceDifference = transform.position - objectToFollow.transform.position;
     }
 
     void Update(){
-        transform.position = objectToFollow.transform.position + distanceDifference;
+        transform.position = new Vector3(
+            objectToFollow.transform.position.x + distanceDifference.x,
+            followY ? objectToFollow.transform.position.y + distanceDifference.y : transform.position.y,
+            objectToFollow.transform.position.z + distanceDifference.z
+        );
     }
 }
