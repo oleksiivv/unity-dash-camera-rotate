@@ -11,12 +11,20 @@ public class MapsSwicther : MonoBehaviour
 
     public Text coinsText;
 
+    public GameObject studyPanel, studyPanelAnim;
+
     void Start(){
-        int currentMap = PlayerPrefs.GetInt("current_map", 0) == 0 ? 1 : PlayerPrefs.GetInt("current_map", 0);
+        if(PlayerPrefs.GetInt("studied", 0) == 0){
+            studyPanel.SetActive(true);
+            PlayerPrefs.SetInt("studied", 1);
+
+            PlayerPrefs.SetInt("coins", 50);
+        }
+
+        currentMap = PlayerPrefs.GetInt("current_map", 0) == 0 ? 1 : PlayerPrefs.GetInt("current_map", 0);
+        currentMap--;
 
         ShowMap();
-
-        if(PlayerPrefs.GetInt("coins", 0)<100)PlayerPrefs.SetInt("coins", 10000);
 
         if(PlayerPrefs.GetInt("coins", 0) == 0){
             coinsText.gameObject.SetActive(false);
@@ -25,6 +33,15 @@ public class MapsSwicther : MonoBehaviour
             coinsText.text = PlayerPrefs.GetInt("coins", 0).ToString();
             coinsText.gameObject.SetActive(true);
         }
+    }
+
+    public void ShowStudyAnimation(){
+        studyPanelAnim.SetActive(true);
+    }
+
+    public void CompleteStudy(){
+        studyPanel.SetActive(false);
+        studyPanelAnim.SetActive(false);
     }
 
     public void Right(){

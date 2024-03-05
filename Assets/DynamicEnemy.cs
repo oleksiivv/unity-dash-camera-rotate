@@ -16,15 +16,19 @@ public class DynamicEnemy : MonoBehaviour
 
     public float speed=1;
 
+    public bool alwaysMove=false;
+
     void Start(){
-        animation.clip = idleClip;
-        animation.Play();
+        if(animation){
+            animation.clip = idleClip;
+            animation.Play();
+        }
 
         if(animator)animator.SetBool("run", false);
     }
 
     void Update(){
-        if(run && !stopAtIdle){
+        if(run && !stopAtIdle || (run && alwaysMove)){
             transform.Translate(Vector3.forward*Time.timeScale / 25 * speed);
         }
     }
@@ -33,8 +37,10 @@ public class DynamicEnemy : MonoBehaviour
         if(other.gameObject.tag.ToUpper().Equals("PLAYER") && !stopAtIdle){
             run=true;
 
-            animation.clip = runClip;
-            animation.Play();
+            if(animation){
+                animation.clip = runClip;
+                animation.Play();
+            }
             
             if(animator)animator.SetBool("run", true);
         }
@@ -50,10 +56,12 @@ public class DynamicEnemy : MonoBehaviour
 
     void OnTriggerExit(Collider other){
         if(other.gameObject.tag.ToUpper().Equals("PLAYER") && !stopAtIdle){
-            run=false;
+            if(!alwaysMove)run=false;
 
-            animation.clip = idleClip;
-            animation.Play();
+            if(animation){
+                animation.clip = idleClip;
+                animation.Play();
+            }
 
             if(animator)animator.SetBool("run", false);
         }
@@ -61,9 +69,12 @@ public class DynamicEnemy : MonoBehaviour
 
     public void Idle(){
         stopAtIdle=true;
-        run=false;
-        animation.clip = idleClip;
-        animation.Play();
+        if(!alwaysMove)run=false;
+
+        if(animation){
+            animation.clip = idleClip;
+            animation.Play();
+        }
 
         if(animator)animator.SetBool("run", false);
     }

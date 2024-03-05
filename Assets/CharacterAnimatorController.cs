@@ -35,7 +35,7 @@ public class CharacterAnimatorController : MonoBehaviour
     }
 
     public void Death(){
-        Debug.Log("death anim here");
+        //Debug.Log("death anim here");
         animator.SetBool("run", false);
         animator.SetBool("jump", false);
 

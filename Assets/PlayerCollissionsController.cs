@@ -26,6 +26,8 @@ public class PlayerCollissionsController : MonoBehaviour
             PlayerPrefs.SetInt("tmp_coins", PlayerPrefs.GetInt("tmp_coins")+5);
 
             ui.UpdateCoinsTextWithPlayerPrefs(PlayerPrefs.GetInt("tmp_coins"));
+
+            playerStateController.audioEffects.Coin();
         }
     }
 

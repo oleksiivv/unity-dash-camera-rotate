@@ -20,8 +20,6 @@ public class LevelController : MonoBehaviour
 
     public void Complete(){
         PlayerPrefs.SetInt("Completed_map#"+map.ToString()+"_level#"+level.ToString(), 1);
-
-        Debug.Log("Completed_map#"+map.ToString()+"_level#"+level.ToString()+": "+IsCompleted().ToString());
     }
 
     public bool IsCompleted(){

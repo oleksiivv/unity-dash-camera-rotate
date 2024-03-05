@@ -21,8 +21,17 @@ public class Map : MonoBehaviour
 
     public int scenesStartFrom=0;
 
+    public AudioEffectsController audioEffect;
+
+    bool allowSound=false;
+
     void Start(){
         UpdateLevelsPanel();
+        Invoke(nameof(AllowSound), 1f);
+    }
+
+    void AllowSound(){
+        allowSound=true;
     }
 
     public void SetVisibility(bool visibility){
@@ -30,11 +39,13 @@ public class Map : MonoBehaviour
         {
             item.SetActive(visibility);
         }
+
+        if(visibility && allowSound)audioEffect.Pick();
     }
 
     public void UpdateLevelsPanel(){
         for(int i=0; i<levelsNumber; i++){
-            if (IsAvailable(i+1)) {
+            if (IsAvailable(i+1+scenesStartFrom)) {
                 levels[i].GetComponent<Image>().color = normalLevelColor;
             } else {
                 levels[i].GetComponent<Image>().color = unavailableLevelColor;
@@ -44,6 +55,8 @@ public class Map : MonoBehaviour
 
     public void OpenLevelsPanel(){
         levelsPanel.SetActive(true);
+
+        audioEffect.Pick();
     }
 
     public void HideLevelsPanel(){
@@ -54,7 +67,9 @@ public class Map : MonoBehaviour
         if (IsAvailable(level)) {
             PlayerPrefs.SetInt("current_map", mapId);
 
-            sceneNavigator.OpenScene(scenesStartFrom + level);
+            sceneNavigator.OpenScene(level);
+
+            audioEffect.Pick();
         }
     }
 
@@ -76,11 +91,11 @@ public class Map : MonoBehaviour
         return true;
     }
 
-    private bool IsMapAvailable(){
+    private bool IsMapAvailable(){        
         if (mapId==1) return true;
 
         for(int i=1; i<= levelsNumber; i++){
-            if (IsMapLevelCompleted(i, mapId-1)) {
+            if (!IsMapLevelCompleted(i, mapId-1)) {
                 return false;
             }
         }
@@ -89,7 +104,7 @@ public class Map : MonoBehaviour
     }
 
     private bool IsAvailable(int level){
-        if (mapId==1 && level==1) {
+        if (level%levelsNumber == 1) {
             return true;
         }
         int prevLevel = level-1;

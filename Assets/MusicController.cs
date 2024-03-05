@@ -17,7 +17,7 @@ public class MusicController : MonoBehaviour
 
         audioSource.enabled = false;
 
-        //audioSource.clip = clips[Random.Range(0, clips.Count)];
+        audioSource.clip = clips[Random.Range(0, clips.Count)];
 
         audioSource.enabled = true;
 

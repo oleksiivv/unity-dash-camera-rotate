@@ -14,10 +14,15 @@ public class PlayerStateController : MonoBehaviour
 
     public LevelController level;
 
+    [HideInInspector()]
+    public AudioEffectsController audioEffects;
+
     void Start()
     {
         move = GetComponent<PlayerMoveController>();
         ui = GetComponent<UIController>();
+
+        audioEffects = GetComponent<AudioEffectsController>();
 
         CanMove=true;
     }
@@ -40,6 +45,8 @@ public class PlayerStateController : MonoBehaviour
             level.Complete();
 
             PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("tmp_coins", 0));
+
+            audioEffects.Win();
         }
     }
 

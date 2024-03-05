@@ -15,9 +15,13 @@ public class PlayerMoveController : MonoBehaviour
 
     public CharacterAnimatorController characterAnimator;
 
+    private AudioEffectsController audioEffects;
+
     void Start(){
         rigidbody = GetComponent<Rigidbody>();
         cameraOrientation = GetComponent<CameraOrientation>();
+
+        audioEffects = GetComponent<AudioEffectsController>();
     }
 
     // Update is called once per frame
@@ -35,6 +39,8 @@ public class PlayerMoveController : MonoBehaviour
 
             rigidbody.AddForce(Vector3.up*100, ForceMode.Impulse);
             rigidbody.AddForce(Vector3.left*15, ForceMode.Impulse);
+
+            audioEffects.Jump();
         }
     }
 
@@ -48,6 +54,8 @@ public class PlayerMoveController : MonoBehaviour
         FallFromPlatformPart2();
 
         Invoke(nameof(FallFromPlatformPart2), 0.8f);
+
+        audioEffects.Lose();
     }
 
     public void FallFromPlatformPart2(){
@@ -63,8 +71,19 @@ public class PlayerMoveController : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision other){
+        if(!PlayerStateController.CanMove)return;
+
         inJump=false;
         speed=0.75f;
         characterAnimator.StartRun();
+
+        if(other.gameObject.tag.ToUpper() == "UNTAGGED"){
+            //Debug.Log(other.gameObject.name);
+            if(other.gameObject.transform.position.y>(transform.position.y-0.25f)){
+                Debug.Log("stucked");
+                rigidbody.AddForce(Vector3.up*50, ForceMode.Impulse);
+                rigidbody.AddForce(Vector3.right*50, ForceMode.Impulse);
+            }
+        }
     }
 }
