@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AdmobController))]
 public class UIController : MonoBehaviour
 {
     public GameObject winPanel, losePanel, pausePanel;
@@ -11,12 +12,18 @@ public class UIController : MonoBehaviour
 
     public Text coinsText;
 
+    private AdmobController admob;
+    private bool showedAds = false;
+
     public void UpdateCoinsTextWithPlayerPrefs(int amount){
         coinsText.text = amount.ToString();
     }
 
     void Awake(){
         Time.timeScale = 1;
+
+        admob = GetComponent<AdmobController>();
+        showedAds=false;
     }
 
     public void Pause(){
@@ -39,6 +46,11 @@ public class UIController : MonoBehaviour
 
     public void SetLosePanelVisibility(bool visibility){
         losePanel.SetActive(visibility);
+
+        if(visibility && !showedAds){
+            admob.showIntersitionalAd();
+            showedAds = true;
+        }
     }
 
     public void Restart(){
