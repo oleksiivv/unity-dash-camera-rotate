@@ -29,6 +29,10 @@ public class PlayerMoveController : MonoBehaviour
     {
         //rigidbody.AddForce(Vector3.left*100 * speed);
         transform.Translate((Vector3.left/50) * speed * Time.timeScale);
+
+        if(Input.GetKeyUp(KeyCode.Space)){
+            Jump();
+        }
     }
 
     public void Jump(){

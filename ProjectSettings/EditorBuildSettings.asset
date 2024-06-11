@@ -4,5 +4,71 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: f7ca592c7ec154fd19ef02d2baa1f158
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-1.unity
+    guid: 9c19b59b0b12a4978890cea3f79c744d
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-2.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-3.unity
+    guid: 2da795571f8824045bd3636d634b2467
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-4.unity
+    guid: 4aac9f2b6240441c0b41b5b02e5c61be
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-5.unity
+    guid: 609cc241323d64a59a149a188bc98a76
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-6.unity
+    guid: 3a3c195d0a0a8484f815d78d72348262
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-7.unity
+    guid: 625623fa087e14a5386cc1e24fdbd88e
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-8.unity
+    guid: 9d411e1e1e8ed475aa4226d6a2ce07e8
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-9.unity
+    guid: 46aabf880a75b44658ff55cbc72e0b72
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-10.unity
+    guid: a12cca8775a29478b8ebaa08d78c3f40
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-11.unity
+    guid: a547902bd522240c6ab366693da59818
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-12.unity
+    guid: 199f08a07ebac49fca0e734115334807
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-13.unity
+    guid: 88434b67e5fe04a37b439f2ec3505fec
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-14.unity
+    guid: 88a1f5bcac89149b382a2ce1abdc35ad
+  - enabled: 1
+    path: Assets/Scenes/LevelsPandora/Level-15.unity
+    guid: 72a567ea12323425f9b9f0b378824dbf
+  - enabled: 1
+    path: Assets/Scenes/LevelsJurrassic/Level-16.unity
+    guid: 60a9234190bca44f0b60efc2c5d341bf
+  - enabled: 1
+    path: Assets/Scenes/LevelsJurrassic/Level-17.unity
+    guid: 729968690ce2d410b9a5b8171f582c73
+  - enabled: 1
+    path: Assets/Scenes/LevelsJurrassic/Level-18.unity
+    guid: 8d6300d0166b14c3eb170ebbd38a5225
+  - enabled: 1
+    path: Assets/Scenes/LevelsJurrassic/Level-19.unity
+    guid: 3dd3053a5a3a046a3a63f735d5dab885
+  - enabled: 1
+    path: Assets/Scenes/LevelsJurrassic/Level-20.unity
+    guid: 241781d40831b4f60b64acfa20e2a0d5
+  - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: 10e18261687f24bdc9617e1f8af29101
   m_configObjects: {}

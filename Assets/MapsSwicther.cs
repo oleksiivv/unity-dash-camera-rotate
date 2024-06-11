@@ -21,6 +21,7 @@ public class MapsSwicther : MonoBehaviour
             PlayerPrefs.SetInt("coins", 50);
         }
 
+        //PlayerPrefs.SetInt("coins", 10050);
         currentMap = PlayerPrefs.GetInt("current_map", 0) == 0 ? 1 : PlayerPrefs.GetInt("current_map", 0);
         currentMap--;
 

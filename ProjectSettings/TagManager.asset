@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - finish
+  - lose_lower_point
+  - black_whole
+  - spider_green
   layers:
   - Default
   - TransparentFX
