@@ -7,7 +7,8 @@ public class SceneNavigator : MonoBehaviour
     public GameObject loadingPanel;
 
     void Awake(){
-        Application.targetFrameRate = 65;
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 50;
 
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("quality", 2));
     }
